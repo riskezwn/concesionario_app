@@ -1,0 +1,101 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato&family=Raleway:wght@400;600;700&display=swap');
+
+body {
+  font-family: "Lato";
+  height: 100vh;
+  object-fit: cover;
+  /* background-image: url('../images/login-background.jpg'); */
+  background-color: #EAE5E5;
+  backdrop-filter: blur(25px);
+}
+main {
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: center;
+  align-items: center;
+  height: 80vh;
+}
+
+h2 {
+  color: #2C335C;
+}
+.login_box {
+  background-color: #FCFCFC;
+  padding: 2em 3em;
+  width: 25%;
+  border-radius: 5px;
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: flex-start;
+  align-items: flex-start;
+
+}
+.login_box .error {
+  font-family: FontAwesome, "Poppins", sans-serif;
+  width: 100%;
+  padding: 1em;
+  border-radius: 10px;
+  opacity: 0.9;
+  color: white;
+  display: none;
+  background-color: #fc3d27;
+  -webkit-box-sizing: border-box; /* Safari/Chrome, other WebKit */
+  -moz-box-sizing: border-box; /* Firefox, other Gecko */
+  box-sizing: border-box;
+}
+.login_box .correct {
+  font-family: FontAwesome, "Poppins", sans-serif;
+  width: 100%;
+  padding: 1em;
+  border-radius: 10px;
+  opacity: 0.9;
+  color: white;
+  display: none;
+  background-color: #4bd85e;
+  -webkit-box-sizing: border-box; /* Safari/Chrome, other WebKit */
+  -moz-box-sizing: border-box; /* Firefox, other Gecko */
+  box-sizing: border-box;
+}
+
+.login_box .form_group {
+  width: 100%;
+  margin: 0.7em 0;
+}
+.login_box label {
+  margin-bottom: 50px;
+}
+.login_box input:not(input[type="submit"]) {
+  font-family: FontAwesome, "Poppins", sans-serif;
+  padding: 1em;
+  width: 100%;
+  background-color: rgba(255, 255, 255, 0);
+  border-radius: 5px;
+  border:none;
+  border-bottom: 2px solid #2C335C;
+  outline: none;
+  -webkit-box-sizing: border-box; /* Safari/Chrome, other WebKit */
+  -moz-box-sizing: border-box; /* Firefox, other Gecko */
+  box-sizing: border-box;
+}
+.login_box input:not(input[type="submit"]):focus {
+  /* box-shadow: 0 0 0 2px #80d0c7; */
+  border: 1px solid #2C335C;
+}
+.login_box input:not(input[type="submit"])::placeholder {
+  font-weight: bold;
+}
+.login_box .submit {
+  cursor: pointer;
+  align-self: center;
+  border: none;
+  color: #2C335C;
+  background-color: rgba(255, 255, 255, 0);
+  border-radius: 10px;
+  border: 2px solid #2C335C;
+  padding: .5em 1em;
+  transition: all .5s;
+}
+.login_box .submit:hover {
+    color: #2c335c73;
+    border: 2px solid #2c335c73;
+}
