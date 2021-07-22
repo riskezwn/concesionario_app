@@ -52,7 +52,9 @@ function checkInt($v)
 
 function getCars($con, $id = null)
 {
-    $sql = "SELECT * FROM coches ";
+    $sql = "SELECT *,
+    LOWER(CONCAT(marca, '_', REPLACE(modelo, ' ', ''))) AS imagen
+     FROM coches ";
     if (isset($id)) {
         $sql .= "WHERE id = '$id'";
     }

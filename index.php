@@ -8,7 +8,7 @@ require_once('common/nav.php');
     ?>
             <a href="edit_car.php?id=<?=$car['id'];?>">
                 <div class="card">
-                    <img src="assets/images/<?=$car['imagen']?>.jpg" alt="car">
+                    <img src="assets/images/car_images/<?=$car['imagen']?>.jpg" alt="car">
                     <div>
                         <div class="marca-modelo"><?= $car['marca'] . ' ' . $car['modelo'] ?></div>
                         <div class="precio"><?= $car['precio'] ?>€</div>
