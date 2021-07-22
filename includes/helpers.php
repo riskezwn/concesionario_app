@@ -94,8 +94,9 @@ function editCar($con, $id, $marca, $modelo, $precio, $stock, $activo )
 function getSellers($con, $id = null)
 {
     $sql = "SELECT v.*,
+            DATE_FORMAT(v.fecha_alta, '%d-%m-%Y') AS antiguedad,
             g.nombre AS grupo,
-            CONCAT (j.nombre, j.apellidos) AS jefe
+            CONCAT (j.nombre, ' ', j.apellidos) AS jefe
             FROM vendedores v 
                 INNER JOIN grupos g ON v.grupo_id = g.id
                 LEFT JOIN vendedores j ON v.jefe_id = j.id

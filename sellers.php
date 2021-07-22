@@ -3,21 +3,20 @@ require_once('common/nav.php');
 ?>
 <main class="car-grid">
     <?php
-    if ($cars = getSellers($con)) :
-        while ($car = mysqli_fetch_assoc($cars)) :
+    if ($sellers = getSellers($con)) :
+        while ($seller = mysqli_fetch_assoc($sellers)) :
     ?>
-            <a href="edit_car.php?id=<?=$car['id'];?>">
+            <a href="#">
                 <div class="card">
-                    <img src="assets/images/seller_default.png" alt="seller">
+                    <img class="image-seller" src="assets/images/seller_default.png" alt="seller">
                     <div>
-                        <div class="marca-modelo"><?= $car['nombre'] . ' ' . $car['apellidos'] ?></div>
-                        <div><?= $car['email']?></div>
-                        <div><?= $car['grupo']?></div>
-                        <div><?= $car['jefe']?></div>
-                        <div><?= $car['cargo']?></div>
-                        <div><?= $car['fecha_alta']?></div>
-                        <div><?= $car['sueldo']?></div>
-                        <div><?= $car['comision']?></div>
+                        <div class="nombre-seller"><?= $seller['nombre'] . ' ' . $seller['apellidos'] . ' | ' . $seller['cargo']?> </div>
+                        <div><?= $seller['email']?></div>
+                        <div><span>Grupo:</span> <?= $seller['grupo']?></div>
+                        <div><span>Responsable:</span> <?= $seller['jefe']?></div>
+                        <div><span>Antiguedad:</span> <?= $seller['antiguedad']?></div>
+                        <div><span>Salario:</span> <?= $seller['sueldo']?>€/año</div>
+                        <div><span>Comisiones:</span> <?= $seller['comision']?>%</div>
                     </div>
                     <!-- <div class="stock"><?= $car['stock'] ?></div> -->
                 </div>

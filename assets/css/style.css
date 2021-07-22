@@ -87,7 +87,7 @@ main {
     position: relative;
     background-color: var(--c-light-gray);
     border-radius: 30px;
-    padding: .5em;
+    padding: .7em;
     display: flex;
     flex-flow: column nowrap;
     
@@ -122,6 +122,18 @@ main {
     background-color: var(--c-secondary-red);
     width: 1.5em;
     height: 1.5em;
+}
+.card img {
+  max-height: 200px;
+  object-fit: cover;
+}
+.card span {
+  color: var(--c-secondary-red);
+  font-weight: bold;
+}
+.card .nombre-seller {
+  margin: 1em 0;
+  font-weight: bold;
 }
 .add-button {
   width: 50px;
