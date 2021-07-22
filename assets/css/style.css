@@ -172,6 +172,7 @@ main {
   border-radius: 50%;
   background-color: var(--c-secondary-red);
   color: var(--c-white);
+  box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.26);
   text-align: center;
   text-decoration: none;
   font-size: 2em;
@@ -180,6 +181,10 @@ main {
   position: fixed;
   bottom: 60px;
   right: 60px;
+  transition: opacity .25s;
+}
+.add-button:hover {
+  opacity: 0.85;
 }
 
 /* FORMS */
