@@ -1,5 +1,5 @@
 <?php
-
+// TODO poder crear y modificar stock a 0
 if (isset($_POST)) {
 
     require_once('helpers.php');
