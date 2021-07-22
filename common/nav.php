@@ -26,7 +26,7 @@ require_once('includes/helpers.php');
             <ul class="nav-list">
                 <li class="li"><a href="index.php"><i class="fas fa-car"></i> Ver todos los coches</a></li>
                 <li class="li"><a href="sellers.php"><i class="far fa-id-card"></i> Vendedores</a></li>
-                <li class="li"><a href="#"><i class="far fa-address-book"></i> Clientes</a></li>
+                <li class="li"><a href="customers.php"><i class="far fa-address-book"></i> Clientes</a></li>
                 <li class="li"><a href="#"><i class="fas fa-receipt"></i> Pedidos</a></li>
             
             </ul>

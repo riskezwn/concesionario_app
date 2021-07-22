@@ -12,6 +12,10 @@
 * {
   box-sizing: border-box;
 }
+a, a:visited {
+  color: var(--c-primary-blue);
+  text-decoration: none;
+}
 
 .container {
   font-family: var(--f-lato);
@@ -134,6 +138,30 @@ main {
   margin: 1em 0;
   font-weight: bold;
 }
+
+.customers-grid .horizontal-card:first-child {
+  border-radius: 30px 30px 0 0;
+  background-color: var(--c-light-gray-tr);
+  color: var(--c-secondary-red);
+  font-weight: bold;
+}
+.horizontal-card:last-child {
+  border-radius: 0 0 30px 30px;
+  border: none;
+  padding-bottom: 1.5em;
+}
+.horizontal-card {
+  display: flex;
+  flex-flow: row wrap;
+  width: 100%;
+  justify-content: space-between;
+  text-align: left;
+  background-color: var(--c-light-gray);
+  border-bottom: 1px solid #000;
+  padding: 1em;
+}
+
+
 .add-button {
   width: 50px;
   height: 50px;

@@ -149,3 +149,22 @@ function getBosses($con)
     }
     return $result;
 }
+function getCustomers($con, $id = null)
+{
+    $sql = "SELECT c.*,
+            CONCAT (v.nombre, ' ', v.apellidos) AS vendedor
+            FROM clientes c
+                INNER JOIN vendedores v ON c.vendedor_id = v.id
+                ";
+    if (isset($id)) {
+        $sql .= "WHERE id = '$id'";
+    }
+    $sql .= "ORDER BY cargo_id ASC";
+    $stmt = mysqli_query($con, $sql);
+
+    $result = false;
+    if ($stmt && mysqli_num_rows($stmt) >= 1) {
+        $result = $stmt;
+    }
+    return $result;
+}
