@@ -7,7 +7,7 @@ require_once('common/nav.php');
         while ($car = mysqli_fetch_assoc($cars)) :
     ?>
             <a href="edit_car.php?id=<?=$car['id'];?>">
-                <div class="card">
+                <div class="card<?php if (!$car['activo']) echo ' inactivo';?>">
                     <img src="assets/images/car_images/<?=$car['imagen']?>.jpg" alt="car">
                     <div>
                         <div class="marca-modelo"><?= $car['marca'] . ' ' . $car['modelo'] ?></div>

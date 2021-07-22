@@ -93,8 +93,10 @@ main {
   padding: 0.7em;
   display: flex;
   flex-flow: column nowrap;
-
   align-items: center;
+}
+.card.inactivo {
+  filter: grayscale(1);
 }
 .card:hover {
   background-color: #cccccc;
