@@ -42,7 +42,7 @@ function checkString($v)
 function checkInt($v)
 {
     $result = false;
-    if (is_int($v) ) {
+    if (is_int($v)) {
         $result = true;
     }
     return $result;
@@ -65,7 +65,7 @@ function getCars($con, $id = null)
     return $result;
 }
 
-function createCar($con, $marca, $modelo, $precio, $stock, $activo )
+function createCar($con, $marca, $modelo, $precio, $stock, $activo)
 {
     $sql = "INSERT INTO coches (marca, modelo, precio, stock, activo)
     VALUES ('$marca', '$modelo', $precio, $stock, $activo) ";
@@ -75,7 +75,7 @@ function createCar($con, $marca, $modelo, $precio, $stock, $activo )
     if ($stmt) $result = true;
     return $result;
 }
-function editCar($con, $id, $marca, $modelo, $precio, $stock, $activo )
+function editCar($con, $id, $marca, $modelo, $precio, $stock, $activo)
 {
     $sql = "UPDATE coches SET 
             marca = '$marca',
@@ -95,15 +95,18 @@ function getSellers($con, $id = null)
 {
     $sql = "SELECT v.*,
             DATE_FORMAT(v.fecha_alta, '%d-%m-%Y') AS antiguedad,
+            c.nombre AS cargo,
             g.nombre AS grupo,
             CONCAT (j.nombre, ' ', j.apellidos) AS jefe
             FROM vendedores v 
                 INNER JOIN grupos g ON v.grupo_id = g.id
+                INNER JOIN cargos c ON v.cargo_id = c.id
                 LEFT JOIN vendedores j ON v.jefe_id = j.id
                 ";
     if (isset($id)) {
         $sql .= "WHERE id = '$id'";
     }
+    $sql .= "ORDER BY cargo_id ASC";
     $stmt = mysqli_query($con, $sql);
 
     $result = false;
@@ -112,10 +115,20 @@ function getSellers($con, $id = null)
     }
     return $result;
 }
-function getGroups($con, $id = null)
+function createSeller($con, $nombre, $apellidos, $email, $pass, $cargo, $salario, $comision, $grupo, $responsable)
+{
+    $sql = "INSERT INTO vendedores (nombre, apellidos, email, clave, cargo_id, sueldo, comision, grupo_id, jefe_id, fecha_alta)
+    VALUES ('$nombre', '$apellidos', '$email', '$pass', $cargo, $salario, $comision, $grupo, $responsable, CURDATE()) ";
+
+    $stmt = mysqli_query($con, $sql);
+    $result = false;
+    if ($stmt) $result = true;
+    return $result;
+}
+function getGroups($con, $table)
 {
     $sql = "SELECT *
-            FROM grupos";
+            FROM $table";
     $stmt = mysqli_query($con, $sql);
     $result = false;
     if ($stmt && mysqli_num_rows($stmt) >= 1) {
@@ -128,7 +141,7 @@ function getBosses($con)
     $sql = "SELECT id,
             CONCAT(nombre, ' ', apellidos) AS nombre
             FROM vendedores
-            WHERE cargo = 'Responsable';";
+            WHERE cargo_id <= 3;";
     $stmt = mysqli_query($con, $sql);
     $result = false;
     if ($stmt && mysqli_num_rows($stmt) >= 1) {

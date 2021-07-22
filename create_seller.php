@@ -35,9 +35,15 @@ require_once('common/nav.php');
             <div class="form-group">
                 <label for="cargo">Cargo</label>
                 <select name="cargo" id="cargo">
-                    <option value="Director">Director</option>
-                    <option value="Responsable">Responsable</option>
-                    <option value="Empleado">Empleado</option>
+                    <?php
+                    if ($groups = getGroups($con, 'cargos')) :
+                        while ($group = mysqli_fetch_assoc($groups)) :
+                    ?>
+                    <option value="<?=$group['id']?>"><?=$group['nombre']?></option>
+                    <?php
+                        endwhile;
+                    endif;
+                    ?>
                 </select>
             </div>
         </div>
@@ -46,7 +52,7 @@ require_once('common/nav.php');
                 <label for="grupo">Grupo</label>
                 <select name="grupo" id="grupo">
                     <?php
-                    if ($groups = getGroups($con)) :
+                    if ($groups = getGroups($con, 'grupos')) :
                         while ($group = mysqli_fetch_assoc($groups)) :
                     ?>
                     <option value="<?=$group['id']?>"><?=$group['nombre']?></option>
@@ -62,7 +68,7 @@ require_once('common/nav.php');
             </div>
             <div class="form-group">
                 <label for="comision">Comisión</label>
-                <input type="number" name="comision" id="comision">
+                <input type="number" name="comision" id="comision" step="0.1">
             </div>
             <div class="form-group">
                 <label for="jefe">Responsable</label>
