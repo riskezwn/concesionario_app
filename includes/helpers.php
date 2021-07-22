@@ -58,6 +58,7 @@ function getCars($con, $id = null)
     if (isset($id)) {
         $sql .= "WHERE id = '$id'";
     }
+    $sql .= "ORDER BY marca ASC";
     $stmt = mysqli_query($con, $sql);
 
     $result = false;
