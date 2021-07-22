@@ -27,7 +27,7 @@ require_once('common/nav.php');
     endif;
 
     ?>
-    <a href="create_car.php" class="add-button">+</a>
+    <a href="create_seller.php" class="add-button">+</a>
 </main>
 
 

@@ -112,3 +112,27 @@ function getSellers($con, $id = null)
     }
     return $result;
 }
+function getGroups($con, $id = null)
+{
+    $sql = "SELECT *
+            FROM grupos";
+    $stmt = mysqli_query($con, $sql);
+    $result = false;
+    if ($stmt && mysqli_num_rows($stmt) >= 1) {
+        $result = $stmt;
+    }
+    return $result;
+}
+function getBosses($con)
+{
+    $sql = "SELECT id,
+            CONCAT(nombre, ' ', apellidos) AS nombre
+            FROM vendedores
+            WHERE cargo = 'Responsable';";
+    $stmt = mysqli_query($con, $sql);
+    $result = false;
+    if ($stmt && mysqli_num_rows($stmt) >= 1) {
+        $result = $stmt;
+    }
+    return $result;
+}
