@@ -1,5 +1,5 @@
 <?php
-// TODO Mostrar errores al crear coche
+// TODO Poder crear empleado sin jefe
 require_once('common/nav.php');
 
 ?>
