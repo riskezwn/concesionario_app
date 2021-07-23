@@ -12,7 +12,7 @@ destroySession('car_id');
             echo showErrors($value);
         }
     } elseif (isset($_SESSION['db'])) {
-        echo showDBError($_SESSION['db']);
+        echo showDBError($_SESSION['db'], $con);
     }
     ?>
     <h3>Añadir un coche</h3>

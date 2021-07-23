@@ -16,7 +16,7 @@ if (isset($_GET['id'])) {
     if (isset($_SESSION['errors'])) {
         showErrors($_SESSION['errors']);
     } elseif (isset($_SESSION['db'])) {
-        echo showDBError($_SESSION['db']);
+        echo showDBError($_SESSION['db'], $con);
     }
     ?>
     <h3>Editar <?= $car['marca'] . ' ' . $car['modelo'] ?></h3>

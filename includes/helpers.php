@@ -22,12 +22,12 @@ function showErrors($error, $field = null)
     }
     return $result;
 }
-function showDBError($status)
+function showDBError($status, $con)
 {
     if ($status) {
         $result = "<div class='msg'><i class='fas fa-exclamation-circle'></i>Se ha guardado correctamente</div>";
     } else {
-        $result = "<div class='error'><i class='fas fa-exclamation-circle'></i>Ha habido un error al guardar en la base de datos</div>";
+        $result = "<div class='error'><i class='fas fa-exclamation-circle'></i>Ha habido un error al guardar en la base de datos</div>" . mysqli_error($con);
     }
     return $result;
 }
@@ -42,7 +42,7 @@ function checkString($v)
 function checkInt($v)
 {
     $result = false;
-    if (is_int($v)) {
+    if (is_int($v) || $v == 0) {
         $result = true;
     }
     return $result;
