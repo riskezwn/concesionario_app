@@ -63,7 +63,7 @@ if (isset($_POST)) {
         $grupo = !empty($_POST['grupo']) ? (int) mysqli_real_escape_string($con, sanitize($_POST['grupo'])) : false;
         $responsable = !empty($_POST['jefe']) ? (int) mysqli_real_escape_string($con, sanitize($_POST['jefe'])) : null;
 
-        var_dump($nombre, $apellidos, $email, $pass, $cargo, $salario, $comision, $grupo, $responsable);
+        
         // Validar los datos
         $errors = [];
         if (!checkString($nombre) || !checkString($apellidos)) {
@@ -87,7 +87,7 @@ if (isset($_POST)) {
         var_dump($errors);
         if (count($errors) > 0) {
             $_SESSION['errors'] = $errors;
-          
+            header("Location: ../create_seller.php");
         } else {
             $secure_pass = password_hash($pass, PASSWORD_DEFAULT);
             if ($create = createSeller($con, $nombre, $apellidos, $email, $secure_pass, $cargo, $salario, $comision, $grupo, $responsable)) {
