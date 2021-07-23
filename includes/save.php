@@ -96,7 +96,7 @@ if (isset($_POST)) {
                 $_SESSION['db'] = false;
             }
             echo mysqli_error($con);
-            /* header("Location: ../create_seller.php"); */
+            header("Location: ../create_seller.php");
         }
     }
 
