@@ -181,6 +181,31 @@ function createCustomer($con, $nombre, $ciudad, $activo, $vendedor)
     if ($stmt) $result = true;
     return $result;
 }
+function getOrders($con, $id = null)
+{
+    $sql = "SELECT p.*,
+            LPAD(p.id, 5, '0') AS pedido_id,
+            DATE_FORMAT(p.fecha, '%d-%m-%Y') AS fecha,
+            cl.nombre AS cliente,
+            CONCAT(co.marca, ' ', co.modelo) AS coche,
+            CONCAT(v.nombre, ' ', v.apellidos) AS vendedor,
+            co.precio * p.cantidad AS importe_total
+            FROM pedidos p 
+                INNER JOIN clientes cl ON p.cliente_id = cl.id
+                INNER JOIN coches co ON p.coche_id = co.id 
+                INNER JOIN vendedores v ON cl.vendedor_id = v.id ";
+    if (isset($id)) {
+        $sql .= "WHERE p.id = '$id'";
+    }
+    $sql .= "ORDER BY p.fecha DESC";
+    $stmt = mysqli_query($con, $sql);
+
+    $result = false;
+    if ($stmt && mysqli_num_rows($stmt) >= 1) {
+        $result = $stmt;
+    }
+    return $result;
+}
 
 /* PERMISSIONS */
 
