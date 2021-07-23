@@ -171,3 +171,13 @@ function getCustomers($con, $id = null)
     }
     return $result;
 }
+function createCustomer($con, $nombre, $ciudad, $activo, $vendedor)
+{
+    $sql = "INSERT INTO clientes (nombre, ciudad, activo, vendedor_id, fecha_alta)
+    VALUES ('$nombre', '$ciudad', $activo, '$vendedor', CURDATE()) ";
+
+    $stmt = mysqli_query($con, $sql);
+    $result = false;
+    if ($stmt) $result = true;
+    return $result;
+}
