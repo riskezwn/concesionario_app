@@ -181,3 +181,24 @@ function createCustomer($con, $nombre, $ciudad, $activo, $vendedor)
     if ($stmt) $result = true;
     return $result;
 }
+
+/* PERMISSIONS */
+
+// Permisos sólo de administrador
+function checkAdminPermissions($con, $id) {
+    $sql = "SELECT cargo_id
+            FROM vendedores
+            WHERE id = $id";
+    $stmt = mysqli_query($con, $sql);
+    
+    $result = false;
+    if ($stmt) {
+        $userdata = mysqli_fetch_assoc($stmt);
+        $cargo_id = $userdata['cargo_id'];
+
+        if ($cargo_id <= 2) {
+            $result = true;
+        }
+    }
+    return $result;
+}

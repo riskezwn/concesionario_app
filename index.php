@@ -6,9 +6,9 @@ require_once('common/nav.php');
     if ($cars = getCars($con)) :
         while ($car = mysqli_fetch_assoc($cars)) :
     ?>
-            <a href="edit_car.php?id=<?=$car['id'];?>">
-                <div class="card<?php if (!$car['activo'] || $car['stock'] <= 0) echo ' inactivo';?>">
-                    <img src="assets/images/car_images/<?=$car['imagen']?>.jpg" alt="car">
+            <a href="edit_car.php?id=<?= $car['id']; ?>">
+                <div class="card<?php if (!$car['activo'] || $car['stock'] <= 0) echo ' inactivo'; ?>">
+                    <img src="assets/images/car_images/<?= $car['imagen'] ?>.jpg" alt="car">
                     <div>
                         <div class="marca-modelo"><?= $car['marca'] . ' ' . $car['modelo'] ?></div>
                         <div class="precio"><?= $car['precio'] ?>€</div>
@@ -17,12 +17,14 @@ require_once('common/nav.php');
                 </div>
             </a>
 
-    <?php
+        <?php
         endwhile;
     endif;
 
-    ?>
-    <a href="create_car.php" class="add-button">+</a>
+    if (checkAdminPermissions($con, $_SESSION['userdata']['id'])) :
+        ?>
+        <a href="create_car.php" class="add-button">+</a>
+    <?php endif; ?>
 </main>
 
 

@@ -1,6 +1,7 @@
 <?php
 // TODO Mostrar errores al crear coche
 require_once('common/nav.php');
+require_once('includes/restraccess.php');
 
 destroySession('car_id');
 

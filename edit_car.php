@@ -1,5 +1,7 @@
 <?php
 require_once('common/nav.php');
+require_once('includes/restraccess.php');
+
 // TODO Comprobar errores al crear
 destroySession('car_id');
 // TODO Comprobar si el id existe
