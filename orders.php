@@ -24,7 +24,7 @@ require_once('common/nav.php');
         endwhile;
     endif;
     ?>
-    <a href="create_seller.php" class="add-button">+</a>
+    <a href="create_order.php" class="add-button">+</a>
 
 </main>
 

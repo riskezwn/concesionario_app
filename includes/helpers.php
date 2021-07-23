@@ -152,7 +152,7 @@ function getBosses($con)
     }
     return $result;
 }
-function getCustomers($con, $id = null)
+function getCustomers($con, $id = null, $id_vendedor = null)
 {
     $sql = "SELECT c.*,
             CONCAT (v.nombre, ' ', v.apellidos) AS vendedor
@@ -162,7 +162,9 @@ function getCustomers($con, $id = null)
     if (isset($id)) {
         $sql .= "WHERE id = '$id'";
     }
-    $sql .= "ORDER BY cargo_id ASC";
+    if (isset($id_vendedor)) {
+        $sql .= "WHERE vendedor_id = $id_vendedor";
+    }
     $stmt = mysqli_query($con, $sql);
 
     $result = false;
