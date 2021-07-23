@@ -185,7 +185,7 @@ function createCustomer($con, $nombre, $ciudad, $activo, $vendedor)
 /* PERMISSIONS */
 
 // Permisos sólo de administrador
-function checkAdminPermissions($con, $id) {
+function checkAdminPermissions($con, $id, $permission_level) {
     $sql = "SELECT cargo_id
             FROM vendedores
             WHERE id = $id";
@@ -196,7 +196,7 @@ function checkAdminPermissions($con, $id) {
         $userdata = mysqli_fetch_assoc($stmt);
         $cargo_id = $userdata['cargo_id'];
 
-        if ($cargo_id <= 2) {
+        if ($cargo_id <= $permission_level) {
             $result = true;
         }
     }

@@ -6,6 +6,6 @@ require_once('connect.php');
 
 $user_id = $_SESSION['userdata']['id'];
 
-if (!checkAdminPermissions($con, $user_id)) {
+if (!checkAdminPermissions($con, $user_id, 2)) {
     header('Location: index.php');
 }

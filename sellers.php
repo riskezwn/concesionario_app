@@ -26,8 +26,10 @@ require_once('common/nav.php');
         endwhile;
     endif;
 
-    ?>
-    <a href="create_seller.php" class="add-button">+</a>
+    if (checkAdminPermissions($con, $_SESSION['userdata']['id'], 2)) :
+        ?>
+        <a href="create_seller.php" class="add-button">+</a>
+    <?php endif; ?>
 </main>
 
 

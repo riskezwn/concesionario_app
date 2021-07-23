@@ -1,6 +1,7 @@
 <?php
 // TODO Poder crear empleado sin jefe
 require_once('common/nav.php');
+require_once('includes/restraccess.php');
 
 ?>
 <main class="create-seller">
@@ -10,7 +11,7 @@ require_once('common/nav.php');
             echo showErrors($value);
         }
     } elseif (isset($_SESSION['db'])) {
-        echo showDBError($_SESSION['db']);
+        echo showDBError($_SESSION['db'], $con);
     }
     ?>
     <h3>Añadir un vendedor</h3>

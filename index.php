@@ -21,7 +21,7 @@ require_once('common/nav.php');
         endwhile;
     endif;
 
-    if (checkAdminPermissions($con, $_SESSION['userdata']['id'])) :
+    if (checkAdminPermissions($con, $_SESSION['userdata']['id'], 3)) :
         ?>
         <a href="create_car.php" class="add-button">+</a>
     <?php endif; ?>
