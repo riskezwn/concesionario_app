@@ -47,6 +47,13 @@ function checkInt($v)
     }
     return $result;
 }
+function checkFecha($fecha){
+	$valores = explode('/', $fecha);
+	if(count($valores) == 3 && checkdate($valores[1], $valores[0], $valores[2])){
+		return true;
+    }
+	return false;
+}
 
 // DB functions
 
@@ -206,6 +213,16 @@ function getOrders($con, $id = null)
     if ($stmt && mysqli_num_rows($stmt) >= 1) {
         $result = $stmt;
     }
+    return $result;
+}
+function createOrder($con, $cliente, $modelo, $cantidad, $fecha)
+{
+    $sql = "INSERT INTO pedidos (coche_id, cliente_id, cantidad, fecha)
+    VALUES ($modelo, $cliente, $cantidad, '$fecha') ";
+
+    $stmt = mysqli_query($con, $sql);
+    $result = false;
+    if ($stmt) $result = true;
     return $result;
 }
 

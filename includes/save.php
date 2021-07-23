@@ -1,4 +1,5 @@
 <?php
+require_once('redirect.php');
 // TODO poder crear y modificar stock a 0
 if (isset($_POST)) {
 
@@ -129,9 +130,45 @@ if (isset($_POST)) {
             /* echo mysqli_error($con); */
             header("Location: ../create_customer.php");
         }
+    } elseif (isset($_POST['createorder'])) {
+
+
+        $cliente = !empty($_POST['cliente']) ? (int) mysqli_real_escape_string($con, sanitize($_POST['cliente'])) : false;
+        $modelo = !empty($_POST['modelo']) ? (int) mysqli_real_escape_string($con, sanitize($_POST['modelo'])) : false;
+        $cantidad = !empty($_POST['cantidad']) ? (int) mysqli_real_escape_string($con, sanitize($_POST['cantidad'])) : false;
+        $fecha = !empty($_POST['fecha']) ? mysqli_real_escape_string($con, sanitize($_POST['fecha'])) : false;
+        $vendedor = (int) $_SESSION['userdata']['id'];
+        var_dump($cliente, $modelo, $cantidad, $fecha, $vendedor);
+
+        // Validar los datos
+        $errors = [];
+        if (!checkInt($cliente) || $cliente < 0) {
+            $errors['cliente'] = 'Selecciona un cliente válido';
+        } elseif (!checkInt($modelo)) {
+            $errors['modelo'] = 'Selecciona un modelo válido';
+        } elseif (!checkInt($cantidad)) {
+            $errors['$cantidad'] = 'Selecciona la cantidad';
+        } elseif (!is_string($fecha) && !checkFecha($fecha)) {
+            $errors['fecha'] = 'Selecciona una fecha válida';
+        }
+
+        if (count($errors) > 0) {
+            $_SESSION['errors'] = $errors;
+            header("Location: ../create_order.php");
+        } else {
+            if ($create = createOrder($con, $cliente, $modelo, $cantidad, $fecha)) {
+                $_SESSION['db'] = true;
+            } else {
+                $_SESSION['db'] = false;
+            }
+            /* echo mysqli_error($con); */
+            header("Location: ../create_order.php");
+        }
+
+
     } else {
-        header('Location: index.php');
-    } 
+        header('Location: ../index.php');
+    }
 } else {
     header('Location: index.php');
 }
