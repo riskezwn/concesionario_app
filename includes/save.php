@@ -156,7 +156,7 @@ if (isset($_POST)) {
             $_SESSION['errors'] = $errors;
             header("Location: ../create_order.php");
         } else {
-            if ($create = createOrder($con, $cliente, $modelo, $cantidad, $fecha)) {
+            if ($create = createOrder($con, $cliente, $modelo, $cantidad, $fecha) && $updateStock = controlStock($con, $cantidad, $modelo)) {
                 $_SESSION['db'] = true;
             } else {
                 $_SESSION['db'] = false;
@@ -164,8 +164,6 @@ if (isset($_POST)) {
             /* echo mysqli_error($con); */
             header("Location: ../create_order.php");
         }
-
-
     } else {
         header('Location: ../index.php');
     }
