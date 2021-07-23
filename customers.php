@@ -29,7 +29,7 @@ require_once('common/nav.php');
         ?>
     </div>
     
-    <a href="create_seller.php" class="add-button">+</a>
+    <a href="create_customer.php" class="add-button">+</a>
 </main>
 
 
