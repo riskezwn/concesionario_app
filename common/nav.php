@@ -32,7 +32,7 @@ require_once('includes/helpers.php');
             
             </ul>
             <ul class="nav-list">
-                <li class="li"><a href="#"><i class="far fa-user"></i> Cuenta</a></li>
+                <li class="li"><a href="#"><i class="far fa-user"></i> <?=$_SESSION['userdata']['nombre']?> <?=$_SESSION['userdata']['apellidos']?></a></li>
                 <li class="li"><a href="includes/logout.php"><i class="fas fa-sign-out-alt"></i> Cerrar sesión</a></li>
             </ul>
         </div>
