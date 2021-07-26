@@ -1,6 +1,5 @@
 <?php
 require_once('redirect.php');
-// TODO poder crear y modificar stock a 0
 if (isset($_POST)) {
 
     require_once('helpers.php');
@@ -10,7 +9,7 @@ if (isset($_POST)) {
         $marca = !empty($_POST['marca']) ? mysqli_real_escape_string($con, sanitize($_POST['marca'])) : false;
         $modelo = !empty($_POST['modelo']) ? mysqli_real_escape_string($con, sanitize($_POST['modelo'])) : false;
         $precio = !empty($_POST['precio']) ? (int) mysqli_real_escape_string($con, sanitize($_POST['precio'])) : false;
-        $stock = !empty($_POST['stock']) ? (int) mysqli_real_escape_string($con, sanitize($_POST['stock'])) : false;
+        $stock = !empty($_POST['stock']) || $_POST['stock'] == 0 ? (int) mysqli_real_escape_string($con, sanitize($_POST['stock'])) : false;
         if (isset($_POST['activo'])) {
             $activo = 1;
         } else {

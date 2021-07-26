@@ -42,7 +42,7 @@ function checkString($v)
 function checkInt($v)
 {
     $result = false;
-    if (is_int($v) || $v == 0) {
+    if (is_int($v)) {
         $result = true;
     }
     return $result;
@@ -95,7 +95,7 @@ function editCar($con, $id, $marca, $modelo, $precio, $stock, $activo)
             stock = $stock,
             activo = $activo
             WHERE id = $id";
-
+    
     $stmt = mysqli_query($con, $sql);
     $result = false;
     if ($stmt) $result = true;
@@ -218,7 +218,6 @@ function getOrders($con, $id = null)
 }
 function createOrder($con, $cliente, $modelo, $cantidad, $fecha)
 {
-    // TODO: Control de stock
     $car = mysqli_fetch_assoc(getCars($con, $modelo));
     $car_stock = $car['stock'];
 
