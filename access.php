@@ -47,6 +47,7 @@ if (isset($_SESSION['userdata'])) {
 
     <script src="https://kit.fontawesome.com/790908a15c.js" crossorigin="anonymous"></script>
     <script src="js/login.js"></script>
+<?php destroySession('error') ?>
 </body>
 
 </html>
