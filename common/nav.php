@@ -14,6 +14,7 @@ require_once('includes/helpers.php');
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="assets/css/normalize.css">
     <link rel="stylesheet" href="assets/css/style.css">
+    <script defer src="js/app.js"></script>
     <script src="https://kit.fontawesome.com/790908a15c.js" crossorigin="anonymous"></script>
     <title>Concesionario</title>
 </head>
