@@ -284,6 +284,20 @@ main h3 {
   transform: translate3d(100%, 0, 0);
 }
 
+/* CREATE ORDER */
+
+#total_pedido {
+  margin: 1em 0;
+  background-color: rgba(207, 182, 182, 0.212);
+  border-radius: 30px;
+  padding: 1em 3em;
+ font-size: 1.2em;
+color: var(--c-primary-blue);
+}
+#total_pedido .total {
+  font-weight: bold;
+}
+
 /* ERROR */
 .error,
 .msg {

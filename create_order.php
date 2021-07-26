@@ -65,10 +65,10 @@ require_once('common/nav.php');
             <label for="fecha">Fecha</label>
             <input type="date" name="fecha" id="fecha" >
         </div>
+        <div id="total_pedido"></div>
         
         <input type="hidden" name="createorder">
         <input type="submit" value="enviar" class="form-button">
-
     </form>
 </main>
 
