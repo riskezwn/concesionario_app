@@ -1,10 +1,10 @@
-// TODO Mostrar errores en acceso
-<?php 
+<?php
 
 require_once('includes/connect.php');
+require_once('includes/helpers.php');
 
 if (isset($_SESSION['userdata'])) {
-    header('Location: index.php');  
+    header('Location: index.php');
 }
 ?>
 
@@ -26,14 +26,13 @@ if (isset($_SESSION['userdata'])) {
 
     </header>
     <main>
+        <?php
+        if (isset($_SESSION['error'])) {
+                echo showErrors($_SESSION['error']);
+        }
+        ?>
         <h2>acceso empleados</h2>
         <form class="login_box" method="POST" action="includes/login.php">
-            <div class="correct" id="correct">
-                &#xf058; Inicio de sesión correcto
-            </div>
-            <div class="error" id="error">
-                &#xf071; Introduce tus datos correctamente
-            </div>
             <div class="form_group">
                 <label for="email">email</label>
                 <input type="email" name="email" id="email" placeholder="&#xf508;  user@example.com" />

@@ -30,32 +30,18 @@ h2 {
   align-items: flex-start;
 
 }
-.login_box .error {
-  font-family: FontAwesome, "Poppins", sans-serif;
-  width: 100%;
+.error {
+  font-family: "Lato", sans-serif;
   padding: 1em;
   border-radius: 10px;
   opacity: 0.9;
   color: white;
-  display: none;
   background-color: #fc3d27;
   -webkit-box-sizing: border-box; /* Safari/Chrome, other WebKit */
   -moz-box-sizing: border-box; /* Firefox, other Gecko */
   box-sizing: border-box;
 }
-.login_box .correct {
-  font-family: FontAwesome, "Poppins", sans-serif;
-  width: 100%;
-  padding: 1em;
-  border-radius: 10px;
-  opacity: 0.9;
-  color: white;
-  display: none;
-  background-color: #4bd85e;
-  -webkit-box-sizing: border-box; /* Safari/Chrome, other WebKit */
-  -moz-box-sizing: border-box; /* Firefox, other Gecko */
-  box-sizing: border-box;
-}
+
 
 .login_box .form_group {
   width: 100%;

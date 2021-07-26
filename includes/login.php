@@ -14,10 +14,12 @@ if (isset($_POST)) {
     // Campo correo y contraseña
     if (!is_string($email) || !filter_var($email, FILTER_VALIDATE_EMAIL) || !$pass) {
         $error = 'Lo siento, las credenciales no coinciden';
+        header('Location: ../access.php');
+
     }
    
     if ($error != '') {
-        $_SESSION['log-errors'] = $error;
+        $_SESSION['error'] = $error;
     } else {
         $sql = "SELECT * FROM vendedores WHERE email = '$email'";
         $stmt = mysqli_query($con, $sql);
@@ -32,11 +34,13 @@ if (isset($_POST)) {
                 header('Location: ../index.php');
             } else {
                 $error = 'Lo siento, las credenciales no coinciden';
-                if ($error != '') $_SESSION['log-errors'] = $error;
+                if ($error != '') $_SESSION['error'] = $error;
+                header('Location: ../access.php');
             }
         } else {
             $error = 'Lo siento, las credenciales no coinciden';
-            if ($error != '') $_SESSION['log-errors'] = $error;
+            if ($error != '') $_SESSION['error'] = $error;
+            header('Location: ../access.php');
         }
 
 
