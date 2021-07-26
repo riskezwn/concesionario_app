@@ -1,7 +1,7 @@
 <?php
 require_once('common/nav.php');
 ?>
-<main class="car-grid">
+<main class="grid cars">
     <?php
     if ($sellers = getSellers($con)) :
         while ($seller = mysqli_fetch_assoc($sellers)) :
