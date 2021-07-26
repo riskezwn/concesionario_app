@@ -47,12 +47,13 @@ function checkInt($v)
     }
     return $result;
 }
-function checkFecha($fecha){
-	$valores = explode('/', $fecha);
-	if(count($valores) == 3 && checkdate($valores[1], $valores[0], $valores[2])){
-		return true;
+function checkFecha($fecha)
+{
+    $valores = explode('/', $fecha);
+    if (count($valores) == 3 && checkdate($valores[1], $valores[0], $valores[2])) {
+        return true;
     }
-	return false;
+    return false;
 }
 
 // DB functions
@@ -218,44 +219,49 @@ function getOrders($con, $id = null)
 function createOrder($con, $cliente, $modelo, $cantidad, $fecha)
 {
     // TODO: Control de stock
-    /* $car = getCars($con, $modelo)
-    $car_stock = mysqli_fetch_
-    if () {
-        # code...
-    } */
-    $sql = "INSERT INTO pedidos (coche_id, cliente_id, cantidad, fecha)
-    VALUES ($modelo, $cliente, $cantidad, '$fecha') ";
+    $car = mysqli_fetch_assoc(getCars($con, $modelo));
+    $car_stock = $car['stock'];
 
-    $stmt = mysqli_query($con, $sql);
     $result = false;
-    if ($stmt) $result = true;
+    if ($cantidad <= $car_stock) {
+        $sql = "INSERT INTO pedidos (coche_id, cliente_id, cantidad, fecha)
+                VALUES ($modelo, $cliente, $cantidad, '$fecha') ";
+        $stmt = mysqli_query($con, $sql);
+
+        $sqlUpdStock = "UPDATE coches
+                        SET stock = stock - $cantidad
+                        WHERE id = $modelo
+                        AND stock >= $cantidad";
+        $stmtUpdStock = mysqli_query($con, $sqlUpdStock);
+
+        if ($stmt && $stmtUpdStock) $result = true;
+    }
     return $result;
 }
 
-function controlStock($con, $cantidad, $coche_id)
+/* function controlStock($con, $cantidad, $coche_id)
 {
-    $sql = "UPDATE coches
+    $sqlUpdStock = "UPDATE coches
             SET stock =
             stock - $cantidad
             WHERE id = $coche_id
             AND stock >= $cantidad";
-    $stmt = mysqli_query($con, $sql);
-    var_dump($stmt);
-    die();
+    $stmtUpdStock = mysqli_query($con, $sql);
     $result = false;
     if ($stmt) $result = true;
     return $result;
-}
+} */
 
 /* PERMISSIONS */
 
 // Permisos sólo de administrador
-function checkAdminPermissions($con, $id, $permission_level) {
+function checkAdminPermissions($con, $id, $permission_level)
+{
     $sql = "SELECT cargo_id
             FROM vendedores
             WHERE id = $id";
     $stmt = mysqli_query($con, $sql);
-    
+
     $result = false;
     if ($stmt) {
         $userdata = mysqli_fetch_assoc($stmt);

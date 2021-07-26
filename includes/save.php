@@ -156,7 +156,7 @@ if (isset($_POST)) {
             $_SESSION['errors'] = $errors;
             header("Location: ../create_order.php");
         } else {
-            if ($create = createOrder($con, $cliente, $modelo, $cantidad, $fecha) && $updateStock = controlStock($con, $cantidad, $modelo)) {
+            if ($create = createOrder($con, $cliente, $modelo, $cantidad, $fecha)) {
                 $_SESSION['db'] = true;
             } else {
                 $_SESSION['db'] = false;
